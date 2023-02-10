@@ -1,1 +1,1 @@
-# Etch-a-Sketch
+Simple "etch a sketch like" tool to draw something using pixels :)
