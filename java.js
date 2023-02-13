@@ -6,6 +6,7 @@ newGrid.addEventListener('click',() =>{
     let answer = prompt("How many squares you want to have per side?");
     if (answer<0 || answer>50 || isNaN(answer)) {
         alert("Must be a number between 1 and 100");
+        container.replaceChildren();
         startingGrid();
     } else {
         for (c=0;c<answer*answer;c++) {
