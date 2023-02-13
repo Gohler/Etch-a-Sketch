@@ -7,7 +7,6 @@ newGrid.addEventListener('click',() =>{
     if (answer<0 || answer>50 || isNaN(answer)) {
         alert("Must be a number between 1 and 100");
         container.replaceChildren();
-        startingGrid();
     } else {
         for (c=0;c<answer*answer;c++) {
             const container = document.querySelector("#container");
@@ -18,8 +17,13 @@ newGrid.addEventListener('click',() =>{
 
             let grid = document.querySelectorAll("square");
             grid.forEach(square => {
-            square.addEventListener('mouseover',() => {
-            square.style.backgroundColor = generateRandomColorRgb();
+            square.addEventListener('mouseover',(e) => {
+                if(e.buttons == 1 || e.buttons == 3){
+                square.style.backgroundColor = generateRandomColorRgb();
+                }
+            square.addEventListener('click', (e) =>{
+                square.style.backgroundColor = generateRandomColorRgb();
+            })
     });
 });
         }
@@ -41,8 +45,13 @@ function startingGrid(){
     }
     let grid = document.querySelectorAll("square");
     grid.forEach(square => {
-        square.addEventListener('mouseover',() => {
-        square.style.backgroundColor = generateRandomColorRgb();
+        square.addEventListener('mouseover',(e) => {
+        if(e.buttons == 1 || e.buttons == 3){
+            square.style.backgroundColor = generateRandomColorRgb();
+            }
         });
+        square.addEventListener('click',(e) => {
+            square.style.backgroundColor = generateRandomColorRgb();
+        })
     });
  }
