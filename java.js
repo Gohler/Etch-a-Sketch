@@ -5,30 +5,23 @@ newGrid.addEventListener('click',() =>{
     container.replaceChildren();
     let answer = prompt("How many squares you want to have per side?");
     if (answer<0 || answer>50 || isNaN(answer)) {
-        alert("Must be a number between 1 and 100");
+        alert("Must be a number between 1 and 50");
         container.replaceChildren();
-    } else {
+    } 
+    else {
         for (c=0;c<answer*answer;c++) {
             const container = document.querySelector("#container");
             container.style.gridTemplateColumns = `repeat(${answer}, 1fr)`
             container.style.gridTemplateRows = `(${answer}, 1fr)`
             const cell = document.createElement("square");
             container.appendChild(cell);
-
-            let grid = document.querySelectorAll("square");
-            grid.forEach(square => {
-            square.addEventListener('mouseover',(e) => {
-                if(e.buttons == 1 || e.buttons == 3){
-                square.style.backgroundColor = generateRandomColorRgb();
-                }
-            square.addEventListener('click', (e) =>{
-                square.style.backgroundColor = generateRandomColorRgb();
-            })
-    });
-});
+            toDraw();
         }
     }
 });
+
+
+
 
 function generateRandomColorRgb() {
     const red = Math.floor(Math.random() * 256);
@@ -39,15 +32,15 @@ function generateRandomColorRgb() {
 
 function startingGrid(){
     for (c=0;c<256;c++) {
-    const container = document.querySelector("#container");
-    const cell = document.createElement("square");
-    container.appendChild(cell);
+        const container = document.querySelector("#container");
+        const cell = document.createElement("square");
+        container.appendChild(cell);
     }
     let grid = document.querySelectorAll("square");
     grid.forEach(square => {
         square.addEventListener('mouseover',(e) => {
-        if(e.buttons == 1 || e.buttons == 3){
-            square.style.backgroundColor = generateRandomColorRgb();
+            if(e.buttons == 1 || e.buttons == 3){
+                square.style.backgroundColor = generateRandomColorRgb();
             }
         });
         square.addEventListener('click',(e) => {
@@ -55,3 +48,17 @@ function startingGrid(){
         })
     });
  }
+
+function toDraw(){
+let grid = document.querySelectorAll("square");
+    grid.forEach(square => {
+        square.addEventListener('mouseover',(e) => {
+            if(e.buttons == 1 || e.buttons == 3){
+                square.style.backgroundColor = generateRandomColorRgb();
+            }
+            square.addEventListener('click', () =>{
+                square.style.backgroundColor = generateRandomColorRgb();
+            })
+        });
+    });
+}
